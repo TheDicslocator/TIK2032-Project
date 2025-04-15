@@ -4,12 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Saya</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Background hijau muda untuk seluruh body */
+        }
+
+        /* SPLASH SCREEN */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100%;
+            background-color: #2980b9;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        #intro-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #intro-screen h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #intro-screen button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: #2980b9;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #intro-screen button:hover {
+            background-color: #23e723;
+            color: white;
+        }
+
+        /* NAVBAR & UMUM */
+        nav ul {
+            list-style: none;
+            display: flex;
+            background-color: #2c3e50;
+            padding: 10px;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #33ce4d;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        /* Konten Beranda */
+        #home {
+            min-height: calc(100vh - 60px); /* Tinggi penuh dikurangi navbar */
+        }
+
+        .welcome-box {
+            background-color: rgba(255, 255, 255, 0.8); /* Kotak semi transparan */
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Gallery */
+        #gallery {
+            background-color: #d0e8d0; /* Warna hijau lebih tua sedikit */
+            padding: 30px 20px;
+        }
+
+        #gallery img {
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border-radius: 8px;
+            border: 3px solid white;
+        }
+
+        #gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Blog */
+        #blog {
+            background-color: #e8f5e9; /* Kembali ke hijau muda */
+            padding: 30px 20px;
+        }
+
+        #blog article {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #blog article a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        #blog article a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Contact */
+        #contact {
+            background-color: #d0e8d0; /* Warna hijau lebih tua sedikit */
+            padding: 30px 20px;
+        }
+
+        #contact ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #contact li {
+            margin-bottom: 10px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #contact a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function showAlert(imageDesc) {
+            alert("Anda mengklik gambar: " + imageDesc);
+        }
+
+        function goToHome() {
+            const intro = document.getElementById("intro-screen");
+            intro.classList.add("fade-out");
+
+            // Sembunyikan elemen setelah animasi selesai (1 detik)
+            setTimeout(() => {
+                intro.style.display = "none";
+            }, 1000);
+        }
+    </script>
 </head>
 <body>
 
-    <!-- Bagian Beranda -->
-    <div id="home">
-        <h1>Selamat Datang di Situs Saya.</h1>
+    <!-- UI AWAL (SPLASH SCREEN) -->
+    <div id="intro-screen">
+        <h1>Selamat datang di Situs Kami</h1>
+        <button onclick="goToHome()">Selanjutnya</button>
+    </div>
+
+    <!-- BERANDA -->
+    <div id="home" class="section">
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -18,96 +204,49 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-
-    <!-- Bagian Gallery -->
-    <div id="gallery">
-        <h2>Gallery</h2>
-        <p>Di bawah ini adalah beberapa foto yang saya ambil:</p>
-        <div>
-            <img src="images/foto1.jpg" alt="Kyoto, Jepang." width="200">
-            <img src="images/foto2.jpg" alt="Foto 2" width="200">
-            <img src="images/foto3.jpg" alt="Foto 3" width="200">
+        <div class="welcome-box">
+            <h2>Beranda</h2>
+            <p>Ini adalah halaman utama dari situs portofolio saya.</p>
+            <p>Selamat datang di website pribadi saya yang menampilkan berbagai karya dan pengalaman saya.</p>
         </div>
     </div>
 
-    <!-- Bagian Blog -->
-    <div id="blog">
-        <h1>Blog</h1>
+    <!-- GALLERY -->
+    <div id="gallery" class="section">
+        <h2>Gallery</h2>
+        <p>Di bawah ini adalah beberapa foto yang saya ambil:</p>
+        <div style="text-align: center;">
+            <img src="images/foto1.jpg" alt="Kyoto, Jepang." width="200" onclick="showAlert('Kyoto, Jepang')">
+            <img src="images/foto2.jpg" alt="Foto 2" width="200" onclick="showAlert('Foto 2')">
+            <img src="images/foto3.jpg" alt="Foto 3" width="200" onclick="showAlert('Foto 3')">
+        </div>
+    </div>
+
+    <!-- BLOG -->
+    <div id="blog" class="section">
+        <h2>Blog</h2>
         <article>
-        <h1><a href="https://id.wikipedia.org/wiki/Tokyo" target="_blank">Tokyo, Jepang.</a></h1>
-        <p>Tokyo 東京, Tōkyō nama resminya Metropolis Tokyo (東京都 Tōkyō-to), adalah salah satu dari 47 prefektur di Jepang yang menjadi ibu kota Jepang sejak 1869.
-            
-            Sampai sekarang, Tokyo Raya menempati peringkat pertama sebagai wilayah metropolitan terpadat di dunia.
-            
-            Tokyo menjadi tempat bertakhtanya Kaisar Jepang, pemerintah Jepang, dan Parlemen Jepang. 
-            
-            Tokyo mencakup sebagian dari wilayah Kanto, Kepulauan Izu, dan Kepulauan Ogasawara.
-            
-            Tokyo dulunya bernama Edo ketika Shōgun Tokugawa Ieyasu menjadikan kota ini sebagai markas besarnya pada 1603. 
-            
-            Kota ini berganti nama menjadi Tokyo setelah Kaisar Meiji menjadikannya sebagai ibu kota dan memindahkan takhtanya dari Kyoto pada tahun 1868.
-
-            Tokyo menempati urutan pertama dalam Indeks Kekuatan Ekonomi Global dan ketiga dalam Indeks Kota Global. 
-            
-            Inventaris GaWC tahun 2018 mengklasifikasikan Tokyo sebagai kota dunia dan hingga 2014 Survei Kota Dunia TripAdvisor menempatkan Tokyo sebagai yang pertama dalam kategori "Pengalaman Keseluruhan Terbaik" (kota ini juga menempati peringkat pertama dalam kategori berikut: "menolong penduduk setempat", "kehidupan malam", "belanja", "transportasi umum lokal", dan "kebersihan jalan-jalan").
-            
-            Hingga 2018, Tokyo dinilai sebagai kota termahal kedua di dunia bagi ekspatriat menurut perusahaan konsultan Mercer dan juga kota termahal ke-11 di dunia menurut survei Economist Intelligence Unit.
-            
-            Pada 2015, Tokyo dinobatkan sebagai Kota Paling Layak Huni di dunia oleh majalah Monocle.
-            
-            Panduan Michelin sejauh ini telah memberi Tokyo bintang Michelin terbanyak di dunia.
-            
-            Tokyo menduduki peringkat pertama dari enam puluh kota dalam Indeks Kota Aman 2017.
-        </p>
-    </article>
-    <article>
-        <h2><a href="https://id.wikipedia.org/wiki/Berlin" target="_blank">Berlin, Jerman.</a></h2>
-        <p>Berlin adalah ibu kota Republik Federal Jerman sejak tahun 1994. 
-            
-            Sebelumnya bagian timur kota ini adalah ibu kota Republik Demokratis Jerman dari tahun 1949 - 1990 dan ibu kota dari negara Jerman bersatu dari tahun 1871 - 1945.
-            
-            Kota ini (2020) memiliki penduduk sekitar 3,7 juta jiwa,[3] sehingga menjadikannya kota terbesar di Jerman dan kota terbesar di Uni Eropa.
-            
-            Terletak di bagian timur laut Jerman dan dialiri Sungai Spree, kota ini merupakan pusat dari Kawasan Metropolitan Berlin-Brandenburg, yang berpenduduk sekitar 5 juta orang yang berasal lebih dari 180 negara.
-            
-            Sekitar sepertiga kota ini terdiri dari hutan dan taman kota, serta danau, dan sungai.
-
-            Selain sebuah kota, Berlin juga merupakan satu dari 16 negara bagian Jerman, yang berperan sebagai pusat kegiatan perpolitikan Uni Eropa, serta sebagai metropolitan tersibuk di Eropa.
-        <p>
-    </article>
-    <article>
-        <h3><a href="https://id.wikipedia.org/wiki/Los_Angeles" target="_blank">Los Angeles, Amerika Serikat.</a></h3>
-        <p>Los Angeles adalah kota besar yang terletak di Amerika Serikat dengan jumlah penduduk sebanyak 3.898.747 jiwa sesuai Sensus Amerika Serikat 2020.
-            
-            Los Angeles adalah kota terpadat di negara bagian California, dan kota terbesar kedua di Amerika Serikat, setelah Kota New York. 
-            
-            Luasnya mencapai 46.867 mil persegi (121.385,0 km2), dan terletak di California Selatan.
-            
-            Terkenal dengan inisial L.A-nya, kota ini merupakan titik utama wilayah statistik metropolitan Los Angeles-Long Beach-Santa Ana dan region Wilayah Los Angeles Raya, yang dihuni 12.828.837 dan hampir 18 juta jiwa pada tahun 2010, menjadikannya salah satu wilayah metropolitan terpadat di dunia dan yang terbesar kedua di Amerika Serikat.
-            
-            Los Angeles juga merupakan ibu kota County Los Angeles, salah satu county terpadat dan paling beragam etnisnya di Amerika Serikat, sementara seluruh wilayah Los Angeles sendiri diakui sebagai kota besar yang paling beragam di negara ini.
-            
-            Penduduk kota Los Angeles disebut "Angelenos".
-
-            Los Angeles didirikan tanggal 4 September 1781 oleh gubernur Spanyol Felipe de Neve.
-            
-            Kota ini menjadi bagian dari Meksiko pada tahun 1821 setelah Perang Kemerdekaan Meksiko.
-            
-            Tahun 1848, pada akhir Perang Meksiko-Amerika Serikat, Los Angeles dan seluruh California dibeli sebagai bagian dari Traktat Guadalupe Hidalgo, sehingga menjadi bagian dari Amerika Serikat.
-            
-            Los Angeles disatukan menjadi munisipalitas pada tanggal 4 April 1850, lima bulan sebelum California mendapat status negara bagian.
-        <p>
+            <h3><a href="https://id.wikipedia.org/wiki/Tokyo" target="_blank">Tokyo, Jepang</a></h3>
+            <p>Tokyo adalah ibu kota Jepang yang sangat modern, padat, dan penuh sejarah. Kota ini menawarkan perpaduan unik antara teknologi mutakhir dan tradisi kuno.</p>
+        </article>
         <article>
-    <div>
+            <h3><a href="https://id.wikipedia.org/wiki/Berlin" target="_blank">Berlin, Jerman</a></h3>
+            <p>Berlin adalah kota dengan sejarah panjang di Jerman, terkenal dengan budaya dan taman kotanya. Kota ini menjadi pusat seni, musik, dan kreativitas di Eropa.</p>
+        </article>
+        <article>
+            <h3><a href="https://id.wikipedia.org/wiki/Los_Angeles" target="_blank">Los Angeles, Amerika Serikat</a></h3>
+            <p>Los Angeles dikenal sebagai pusat industri hiburan dunia, dengan pantai indah dan kehidupan multikultural. Hollywood dan Beverly Hills adalah beberapa ikon kota ini.</p>
+        </article>
+    </div>
 
-
-    <!-- Bagian Contact -->
-    <div id="contact">
+    <!-- KONTAK -->
+    <div id="contact" class="section">
         <h2>Contact</h2>
         <p>Anda bisa menghubungi saya di:</p>
         <ul>
-            <li>Email: [happyeastermaindoka026@student.unsrat.ac.id]</li>
-            <li>Telepon: [+62 812 4593 0901]</li>
+            <li>Email: <a href="mailto:happyeastermaindoka026@student.unsrat.ac.id">happyeastermaindoka026@student.unsrat.ac.id</a></li>
+            <li>Telepon: <a href="tel:+6281245930901">+62 812 4593 0901</a></li>
+            <li>Alamat: Jl. Contoh No. 123, Manado, Sulawesi Utara</li>
         </ul>
     </div>
 
